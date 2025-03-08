@@ -53,6 +53,16 @@
 
         - You can get multiple sample cluster creation here https://github.com/eksctl-io/eksctl/tree/main/examples
 
+# EKS Networking Endpoint
+An EKS Cluster Endpoint is the API server endpoint of an Amazon Elastic Kubernetes Service (EKS) cluster. This endpoint is used by kubectl, AWS SDKs, and other Kubernetes tools to communicate with the Kubernetes API server.
+There are three endpoints for your EKS Cluster:
+    a. Public
+       Mean your worker nodes are exposed to the internet. 
+    b. Private
+       Means you can't expose your application to the internet
+    c. Public and Private
+       When this is used, the Worker node are deployed in the private subnet which public facing devices like Load Balancer are deployed in the Public Subnet. 
+
  # Common Command for Clusters:
         a. Ceate a new cluster:
             eksctl create cluster --name $cluser-name --region $region --version 1.31 --vpc-private-subnets $subnet-id1,$subnet-id2 --managed

@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: demo-pod
-  namespace: training
+  namespace: rancher
   labels: 
     env: development
     project: training
     ownername: Tope
 spec: 
   containers:
-    - image: nginx
+    - image: httpd
       name: ngix-server
       ports:
         - protocol: TCP

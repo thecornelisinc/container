@@ -1,0 +1,84 @@
+# A simple example of ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: cluster-1
+  region: us-east-1
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.micro
+    desiredCapacity: 1
+
+
+
+# ---
+
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: basic-cluster
+#   region: us-east-1
+# vpc:
+#   subnets:
+#     private:
+#       us-east-1a: { id: subnet-05112cd245227fc6a }
+#       us-east-1b: { id: subnet-0570e6017fb0218f2 }
+# nodeGroups:
+#   - name: ng-1
+#     instanceType: t2.medium
+#     desiredCapacity: 1
+#     labels: { env: prod }
+#     privateNetworking: true
+#     volumeSize: 20
+#     ssh:
+#       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+#   - name: ng-2
+#     labels: { env: dev }
+#     instanceType: t2.micro
+#     privateNetworking: true
+#     desiredCapacity: 1
+#     volumeSize: 20
+#     ssh:
+#       publicKeyPath: ~/.ssh/id_rsa.pub
+
+
+# An example of ClusterConfig object using Managed Nodes
+# ---
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: rancher
+#   region: us-east-1
+# vpc:
+#   subnets:
+#     private:
+#       us-east-1a: { id: subnet-05112cd245227fc6a }
+#       us-east-1b: { id: subnet-0570e6017fb0218f2 }
+# managedNodeGroups:
+#   - name: managed-ng-private-aa
+#     instanceType: t2.medium
+#     minSize: 1
+#     desiredCapacity: 1
+#     maxSize: 2
+#     availabilityZones: ["us-east-1a", "us-east-1b"]
+#     volumeSize: 20
+#     securityGroups:
+#       attachIDs: ["sg-0f398929185474001"]
+#     ssh:
+#       allow: true
+#       publicKeyPath: ~/.ssh/id_rsa.pub
+#       # new feature for restricting SSH access to certain AWS security group IDs
+#       sourceSecurityGroupIds: ["sg-0391978c596199e34"]
+#     labels: {env: prod}
+#     # Note: unmanaged nodegroups (`nodeGroups` field) use a different structure (map[string]string) to express taints
+
+#   - name: managed-ng-private
+#     instanceType: t2.medium
+#     # launch nodegroup in private subnets
+#     privateNetworking: true
+
+

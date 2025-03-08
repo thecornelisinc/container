@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: marketing-admin
+  namespace: marketing
+  labels:
+    env: development
+    department: marketing
+rules:
+  - apiGroups: ["", "apps" ] # "" indicates the core API group
+    resources: ["pods", "deployments"]  # cab be further restricted to ["deployments", "pods", "replicasets"]
+    verbs: ["get", "list", "watch"]
+    
